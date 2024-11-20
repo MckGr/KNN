@@ -64,20 +64,7 @@ public class KNN {
                     double dokladnosc = klasyfikator.obliczDokladnosc(zbiorTestowy, przewidywania);
                     System.out.printf("Dokładność klasyfikacji: %.2f%%\n", dokladnosc);
                     break;
-//                Użytkownik zostaje poproszony o podanie ścieżki do pliku ze zbiorem testowym.
-//                    Ścieżka ta jest odczytywana za pomocą scanner.nextLine() i przypisywana do zmiennej sciezkaTestowa.
-//                    Następnie tworzona jest lista zbiorTestowy, która będzie przechowywać obserwacje testowe.
-//                    Metoda wczytajDaneTestowe() jest wywoływana, aby wczytać dane z pliku testowego i umieścić je w liście zbiorTestowy.
-//                        Tworzona jest również lista przewidywania, która będzie przechowywać przewidywane etykiety dla obserwacji testowych.
-//                        Następnie, dla każdej obserwacji testowej z zbiorTestowy, wykonuje się następujące czynności:
-//                Wywoływana jest metoda znajdzSasiadow(), aby znaleźć k najbliższych sąsiadów dla obecnej obserwacji testowej.
-//                    Na podstawie tych sąsiadów wywoływana jest metoda przewidywanieKlasyfikacjiKwiatow, aby dokonać klasyfikacji.
-//                    Przewidziana etykieta jest dodawana do listy przewidywania.
-//                    Wyświetlana jest przewidziana etykieta dla aktualnej obserwacji testowej.
-//                    Po przetworzeniu wszystkich obserwacji testowych, obliczana jest dokładność klasyfikacji za pomocą metody obliczDokladnosc().
-//                        Dokładność klasyfikacji jest wyświetlana na konsoli z użyciem System.out.printf().
 
-                // Klasyfikacja obserwacji podanej przez użytkownika w konsoli
                 case "b":
                     System.out.println("Podaj cechy obserwacji oddzielone przecinkami:");
                     String[] userInput = scanner.nextLine().split(",");
@@ -91,11 +78,7 @@ public class KNN {
                     String wynik = klasyfikator.przewidywanieKlasyfikacjiKwiatow(sasiedzi);
                     System.out.println("Przewidziana etykieta: " + wynik);
                     break;
-//                Użytkownik jest proszony o podanie cech obserwacji oddzielonych przecinkami.
-//                        Wprowadzone przez użytkownika cechy są dzielone na pojedyncze wartości i dodawane do listy userInstance.
-//                Następnie wywoływana jest metoda znajdzSasiadow, aby znaleźć k najbliższych sąsiadów dla podanej przez użytkownika obserwacji.
-//                        Na podstawie tych sąsiadów wywoływana jest metoda przewidywanieKlasyfikacjiKwiatow, aby dokonać klasyfikacji.
-//                Przewidziana etykieta jest wyświetlana na konsoli.
+
                 // Zmiana liczby k
                 case "c":
                     System.out.print("Podaj nową liczbę K: ");
@@ -136,10 +119,6 @@ public class KNN {
             e.printStackTrace();
         }
     }
-//    Metoda odpowiedzialna za wczytanie danych treningowych z pliku o podanej ścieżce.
-//    Tworzy obiekty klasy Obserwacja na podstawie danych z pliku treningowego.
-//    Oblicza liczbę cech na podstawie pierwszej obserwacji w zbiorze treningowym.
-
 
     // Metoda wczytująca dane testowe z pliku
     private void wczytajDaneTestowe(String sciezkaTestowa, List<Obserwacja> zbiorTestowy) {
@@ -157,9 +136,7 @@ public class KNN {
             System.out.println("Wystąpił błąd + " + e.getMessage());
             e.printStackTrace();
         }
-    }
-//    Metoda odpowiedzialna za wczytanie danych testowych z pliku o podanej ścieżce.
-//    Tworzy obiekty klasy Obserwacja na podstawie danych z pliku testowego i dodaje je do listy zbiorTestowy.
+
 
     // Metoda zwracająca k najbliższych sąsiadów dla danej obserwacji
     public List<Obserwacja> znajdzSasiadow(List<Double> obserwacjaTestowa, int k) {
@@ -170,11 +147,6 @@ public class KNN {
         zbiorTreningowy.sort(Comparator.comparingDouble(Obserwacja::getOdleglosc));
         return zbiorTreningowy.subList(0, k);
     }
-
-//    Metoda znajdująca k najbliższych sąsiadów dla danej obserwacji testowej.
-//    Oblicza odległość euklidesową między obserwacją testową a każdą obserwacją treningową.
-//    Sortuje obserwacje treningowe według odległości.
-//    Zwraca listę k najbliższych sąsiadów.
 
     // Metoda dokonująca klasyfikacji na podstawie k najbliższych sąsiadów
     private String przewidywanieKlasyfikacjiKwiatow(List<Obserwacja> sasiedzi) {
@@ -189,10 +161,6 @@ public class KNN {
                 .map(Map.Entry::getKey)
                 .orElse(null);
     }
-
-//    Metoda dokonująca klasyfikacji na podstawie k najbliższych sąsiadów.
-//    Tworzy mapę, w której kluczem jest etykieta, a wartością liczba wystąpień tej etykiety wśród sąsiadów.
-//    Zwraca etykietę, która ma najwięcej głosów spośród sąsiadów.
 
     //Liczenie odleglosci euklidesowej
     private double odlegloscEuklidesowa(List<Double> obserwacja1, List<Double> obserwacja2) {
@@ -217,10 +185,6 @@ public class KNN {
         }
         return (double) poprawne / zbiorTestowy.size() * 100.0;
     }
-//    Metoda obliczająca dokładność klasyfikacji na podstawie przewidywań i prawdziwych etykiet w zbiorze testowym.
-//    Porównuje przewidywane etykiety z prawdziwymi etykietami.
-//    Zwraca procentową dokładność klasyfikacji.
-
 }
 
 
